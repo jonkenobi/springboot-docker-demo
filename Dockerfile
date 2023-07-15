@@ -5,6 +5,7 @@ COPY gradle gradle
 COPY build.gradle settings.gradle gradlew ./
 COPY src src
 
+RUN chmod +x gradlew
 RUN ./gradlew bootJar -x test
 RUN mkdir -p build/libs/dependency && (cd build/libs/dependency; jar -xf ../*.jar)
 
