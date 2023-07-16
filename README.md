@@ -1,6 +1,7 @@
 # springboot-docker-demo
 A basic Dockerized SpringBoot application. (Kotlin, Gradle used)
-It has a Hello API that returns a text msg at `localhost:8080/hello`
+
+It has a Hello API that returns a text msg at `localhost:8080/hello`.
 
 Instructions on how to deploy this Docker image to AWS using ECR and EC2 are also included.
 
@@ -19,6 +20,7 @@ Instructions on how to deploy this Docker image to AWS using ECR and EC2 are als
    Select the Source you chose in step 1.
    https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html
 4. Create a new IAM policy with the following statement. Attach this policy to the service role you gave the Codebuild project in Step 3.
+   ```
    {
    "Action": [
    "ecr:BatchCheckLayerAvailability",
@@ -31,6 +33,7 @@ Instructions on how to deploy this Docker image to AWS using ECR and EC2 are als
    "Resource": "*",
    "Effect": "Allow"
    }
+   ```
    
 5. Run the CodeBuild project, and the image will be created in ECR!  
 
