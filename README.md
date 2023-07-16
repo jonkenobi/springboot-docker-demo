@@ -1,12 +1,12 @@
 # springboot-docker-demo
-A basic Kotlin SpringBoot app that uses Docker. 
-After starting the app, a message will be displayed at `localhost:8080/hello`
+A basic Dockerized SpringBoot application. (Kotlin, Gradle used)
+It has a Hello API that returns a text msg at `localhost:8080/hello`
 
-Instructions on how to deploy this image to AWS are also included.
+Instructions on how to deploy this Docker image to AWS using ECR and EC2 are also included.
 
 ![served on ec2.jpg](https://github.com/jonkenobi/springboot-docker-demo/blob/master/served%20on%20ec2.jpg)
 
-## Docker commands for using app locally 
+## Docker commands for starting app locally 
 `docker build -t sb-docker-demo .`
 
 `docker run -p 8080:8080 sb-docker-demo` 
@@ -37,8 +37,8 @@ Instructions on how to deploy this image to AWS are also included.
 
 ## Deploying the ECR image onto EC2 and serve it on the web
 1. Create an ec2 instance 
-2. ssh onto it 
-3. Install docker
+2. EC2 connect into it from the AWS console
+3. Install docker on the ec2 instance
 4. Start docker `sudo service docker start`
 5. Pull the ecr image into the ec2
    `aws ecr get-login-password --region ap-northeast-1 | sudo docker login --username AWS --password-stdin <account_id>.dkr.ecr.ap-northeast-1.amazonaws.com`
