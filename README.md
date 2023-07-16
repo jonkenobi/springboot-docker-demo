@@ -3,7 +3,8 @@ A basic Kotlin SpringBoot app that uses Docker.
 After starting the app, a message will be displayed at `localhost:8080/hello`
 
 Instructions on how to deploy this image to AWS are also included.
-![Served on ec2](served on ec2.jpg)
+
+![served on ec2.jpg](https://github.com/jonkenobi/springboot-docker-demo/blob/master/served%20on%20ec2.jpg)
 
 ## Docker commands for using app locally 
 `docker build -t sb-docker-demo .`
