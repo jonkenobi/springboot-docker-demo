@@ -1,18 +1,21 @@
 # springboot-docker-demo
-Basic Kotlin SpringBoot app using docker 
-After serving the app, going to `localhost:8080/hello` will display a msg
+A basic Kotlin SpringBoot app that uses Docker. 
+After starting the app, a message will be displayed at `localhost:8080/hello`
 
-Also includes instructions on how to deploy this image to AWS.
+Instructions on how to deploy this image to AWS are also included.
+![Served on ec2](served on ec2.jpg)
 
-## Docker Commands  
+## Docker commands for using app locally 
 `docker build -t sb-docker-demo .`
+
 `docker run -p 8080:8080 sb-docker-demo` 
 
-# How to use this docker image in AWS   
+# How to use this Docker image on AWS   
 ## Push the image onto AWS ECR
 1. Upload this code onto your source (e.g Github, CodeCommit, S3)
 2. Create an ECR repository in your AWS account (No special settings needed)
-3. Create a CodeBuild project on the console, using standard settings and also setting environment variables. (The cli is even more hassle) 
+3. Create a CodeBuild project on the AWS console, using standard settings and also setting environment variables. (The cli is even more hassle)
+   Select the Source you chose in step 1.
    https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html
 4. Create a new IAM policy with the following statement. Attach this policy to the service role you gave the Codebuild project in Step 3.
    {
@@ -40,7 +43,7 @@ Also includes instructions on how to deploy this image to AWS.
    `aws ecr get-login-password --region ap-northeast-1 | sudo docker login --username AWS --password-stdin <account_id>.dkr.ecr.ap-northeast-1.amazonaws.com`
    `docker pull ${aws_account_id}.dkr.ecr.${region}.amazonaws.com/${hello-repository}:latest`
 6. `docker run -p 443:8080 image-name` 
-7. Go to the instance's "${Public IPv4 DNS}/hello" and access the APIs!
+7. Go to the instance's "${Public IPv4 DNS}/hello" and see the API being served!
 
 
 ##  Deploying the ECR image onto EKS or ECS
